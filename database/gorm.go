@@ -24,6 +24,7 @@ func autoMigrate(db *gorm.DB) {
 	if os.Getenv("DROP_TABLES") == "yes" {
 		_ = db.Migrator().DropTable(&models.User{})
 		_ = db.Migrator().DropTable(&models.Date{})
+		_ = db.Migrator().DropTable(&models.DailyText{})
 	}
 
 	if os.Getenv("CREATE_TABLE") == "yes" {
@@ -31,6 +32,9 @@ func autoMigrate(db *gorm.DB) {
 			fmt.Println(err)
 		}
 		if err := db.AutoMigrate(&models.Date{}); err != nil {
+			fmt.Println(err)
+		}
+		if err := db.AutoMigrate(&models.DailyText{}); err != nil {
 			fmt.Println(err)
 		}
 	}

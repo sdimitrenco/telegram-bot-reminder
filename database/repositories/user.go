@@ -31,7 +31,7 @@ func (user User) FindByUserId(id int32) *models.User {
 
 func (user User) FindByChatId(s string) *models.User {
 	var u models.User
-	user.db.First(&u, s)
+	user.db.First(&u, "chat_id = ?", s)
 	return &u
 }
 

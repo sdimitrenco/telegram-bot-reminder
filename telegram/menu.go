@@ -5,21 +5,21 @@ import (
 )
 
 var today = tbot.KeyboardButton{
-	Text:            "Стих на cегодня",
+	Text:            "📗 Стих на cегодня",
 	RequestContact:  false,
 	RequestLocation: false,
 	RequestPoll:     nil,
 }
 
 var tomorrow = tbot.KeyboardButton{
-	Text:            "Стих на завтра",
+	Text:            "📘 Стих на завтра",
 	RequestContact:  false,
 	RequestLocation: false,
 	RequestPoll:     nil,
 }
 
 var profile = tbot.KeyboardButton{
-	Text:            "💳 profile",
+	Text:            "🙋 ‍Завтра ведет",
 	RequestContact:  false,
 	RequestLocation: false,
 	RequestPoll:     nil,

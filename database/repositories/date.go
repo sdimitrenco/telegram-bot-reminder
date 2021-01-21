@@ -13,18 +13,18 @@ func NewDate(db *gorm.DB) *Date {
 	return &Date{db: db}
 }
 
-func (repo Date) Create(d *models.Date) *models.Date {
-	repo.db.Create(&d)
-	return d
+func (d Date) Create(date *models.Date) *models.Date {
+	d.db.Create(&date)
+	return date
 }
 
-func (repo Date) Save(d *models.Date) *models.Date {
-	repo.db.Save(&d)
-	return d
+func (d Date) Save(date *models.Date) *models.Date {
+	d.db.Save(&date)
+	return date
 }
 
-func (repo Date) FindByUserId(date string) *models.Date {
-	var d models.Date
-	repo.db.First(&d, date)
-	return &d
+func (d Date) FindByUserId(date string) *models.Date {
+	var dt models.Date
+	d.db.First(&dt, date)
+	return &dt
 }

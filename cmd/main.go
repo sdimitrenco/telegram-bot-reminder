@@ -7,9 +7,10 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"telegram-bot-reminder/controlers"
 	"telegram-bot-reminder/database"
+	"telegram-bot-reminder/parsers"
 	"telegram-bot-reminder/telegram"
-	"telegram-bot-reminder/telegram/messages"
 )
 
 var ctx context.Context
@@ -29,7 +30,12 @@ func main() {
 
 	//add database to context
 	ctx = database.Boot(context.Background())
-	messages.SendMessage(ctx)
+
+	//parser daily text
+	go controlers.GetDailyText(ctx)
+
+	//parse list users
+	parsers.RunTableParser()
 
 	//telegram server
 	go telegram.Run(ctx)
