@@ -18,7 +18,14 @@ var tomorrow = tbot.KeyboardButton{
 	RequestPoll:     nil,
 }
 
-var profile = tbot.KeyboardButton{
+var hostToday = tbot.KeyboardButton{
+	Text:            "🙋 Сегодня ведет",
+	RequestContact:  false,
+	RequestLocation: false,
+	RequestPoll:     nil,
+}
+
+var hostTomorrow = tbot.KeyboardButton{
 	Text:            "🙋 ‍Завтра ведет",
 	RequestContact:  false,
 	RequestLocation: false,
@@ -28,7 +35,7 @@ var profile = tbot.KeyboardButton{
 func MenuButtons() *tbot.ReplyKeyboardMarkup {
 	return &tbot.ReplyKeyboardMarkup{
 		Keyboard: [][]tbot.KeyboardButton{
-			{today, tomorrow, profile},
+			{today, tomorrow, hostToday, hostTomorrow},
 		},
 		ResizeKeyboard:  true,
 		OneTimeKeyboard: false,

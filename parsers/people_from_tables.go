@@ -3,10 +3,14 @@ package parsers
 import (
 	"encoding/json"
 	"fmt"
+	"gorm.io/gorm"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"telegram-bot-reminder/database/models"
+	"telegram-bot-reminder/database/repositories"
+	"time"
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
@@ -69,7 +73,7 @@ func saveToken(path string, token *oauth2.Token) {
 	json.NewEncoder(f).Encode(token)
 }
 
-func RunTableParser() {
+func RunTableParser(ctx context.Context) {
 	b, err := ioutil.ReadFile("credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
@@ -90,19 +94,32 @@ func RunTableParser() {
 	// Prints the names and majors of students in a sample spreadsheet:
 	// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
 	spreadsheetId := os.Getenv("TABLE_KEY")
-	readRange := "Class Data!A2:B"
+	readRange := "ЯНВАРЬ 2021!A2:B"
 	resp, err := srv.Spreadsheets.Values.Get(spreadsheetId, readRange).Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve data from sheet: %v", err)
 	}
-
+	var stringDate string
+	var t time.Time
+	var blankTime time.Time
+	layout := "02.01.2006"
+	db := ctx.Value("db").(*gorm.DB)
+	dateRepo := repositories.NewDate(db)
 	if len(resp.Values) == 0 {
 		fmt.Println("No data found.")
 	} else {
-		fmt.Println("Name, Major:")
 		for _, row := range resp.Values {
-			// Print columns A and E, which correspond to indices 0 and 4.
-			fmt.Printf("%s\n", row)
+
+			stringDate = fmt.Sprintf("%s", row[0])
+			t, _ = time.Parse(layout, stringDate)
+			if dateRepo.FindByDate(t).Date == blankTime {
+				dateRepo.Create(&models.Date{
+
+					Date:       t,
+					PeopleName: fmt.Sprintf("%s", row[1]),
+				})
+			}
+
 		}
 	}
 }

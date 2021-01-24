@@ -1,15 +1,17 @@
 package models
 
+import "time"
+
 type Date struct {
 	Id         int32 `gorm:"primaryKey"`
-	StringDate string
-	UserID     int32
+	Date       time.Time
+	PeopleName string
 }
 
-func (d *Date) GetStringDate() string {
-	return d.StringDate
+func (d *Date) GetDate() time.Time {
+	return d.Date
 }
 
-func (d *Date) GetUserId() int32 {
-	return d.UserID
+func (d *Date) GetPeopleName() string {
+	return d.PeopleName
 }

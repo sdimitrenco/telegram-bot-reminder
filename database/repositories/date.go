@@ -3,6 +3,7 @@ package repositories
 import (
 	"gorm.io/gorm"
 	"telegram-bot-reminder/database/models"
+	"time"
 )
 
 type Date struct {
@@ -23,8 +24,14 @@ func (d Date) Save(date *models.Date) *models.Date {
 	return date
 }
 
-func (d Date) FindByUserId(date string) *models.Date {
+func (d Date) FindByDate(date time.Time) *models.Date {
 	var dt models.Date
-	d.db.First(&dt, date)
+	d.db.First(&dt, "date = ?", date)
 	return &dt
+}
+
+func (d Date) GetAll() []models.Date {
+	var dates []models.Date
+	d.db.Find(&dates)
+	return dates
 }

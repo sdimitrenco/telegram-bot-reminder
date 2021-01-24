@@ -35,7 +35,7 @@ func main() {
 	go controlers.GetDailyText(ctx)
 
 	//parse list users
-	parsers.RunTableParser()
+	go parsers.RunTableParser(ctx)
 
 	//telegram server
 	go telegram.Run(ctx)
