@@ -3,8 +3,8 @@ package controlers
 import (
 	"context"
 	"fmt"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
 	"gorm.io/gorm"
-	"telegram-bot-reminder/database/repositories"
 	"time"
 )
 

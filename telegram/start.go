@@ -2,9 +2,9 @@ package telegram
 
 import (
 	"context"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/controlers"
 	"github.com/yanzay/tbot"
 	"os"
-	"telegram-bot-reminder/controlers"
 )
 
 func Start(ctx context.Context, client *tbot.Client, server *tbot.Server) {

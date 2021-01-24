@@ -2,10 +2,10 @@ package database
 
 import (
 	"fmt"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"os"
-	"telegram-bot-reminder/database/models"
 )
 
 //connect to database

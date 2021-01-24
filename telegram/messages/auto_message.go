@@ -3,10 +3,10 @@ package messages
 import (
 	"context"
 	"fmt"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
 	"github.com/yanzay/tbot"
 	"gorm.io/gorm"
 	"os"
-	"telegram-bot-reminder/database/repositories"
 	"time"
 )
 

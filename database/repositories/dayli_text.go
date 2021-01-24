@@ -1,8 +1,8 @@
 package repositories
 
 import (
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/models"
 	"gorm.io/gorm"
-	"telegram-bot-reminder/database/models"
 )
 
 type DailyText struct {

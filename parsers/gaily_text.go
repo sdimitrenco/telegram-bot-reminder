@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/models"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
 	strip "github.com/grokify/html-strip-tags-go"
 	"gorm.io/gorm"
 	"net/http"
-	"telegram-bot-reminder/database/models"
-	"telegram-bot-reminder/database/repositories"
 )
 
 func ParserDailyVerse(ctx context.Context, url string, date string) string {

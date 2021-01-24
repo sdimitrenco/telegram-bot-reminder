@@ -2,9 +2,9 @@ package controlers
 
 import (
 	"context"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/models"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
 	"gorm.io/gorm"
-	"telegram-bot-reminder/database/models"
-	"telegram-bot-reminder/database/repositories"
 )
 
 func AddNewUser(

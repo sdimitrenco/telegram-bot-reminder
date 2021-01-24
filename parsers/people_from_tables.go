@@ -3,13 +3,13 @@ package parsers
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/models"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
 	"gorm.io/gorm"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"telegram-bot-reminder/database/models"
-	"telegram-bot-reminder/database/repositories"
 	"time"
 
 	"golang.org/x/net/context"

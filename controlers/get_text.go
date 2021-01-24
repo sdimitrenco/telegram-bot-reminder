@@ -2,8 +2,8 @@ package controlers
 
 import (
 	"context"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/parsers"
 	"os"
-	"telegram-bot-reminder/parsers"
 	"time"
 )
 

@@ -3,20 +3,20 @@ package telegram
 import (
 	"context"
 	"fmt"
-	"github.com/robfig/cron/v3"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/controlers"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database/repositories"
+	_ "github.com/robfig/cron/v3"
 	"github.com/yanzay/tbot"
 	"gorm.io/gorm"
-	"telegram-bot-reminder/controlers"
-	"telegram-bot-reminder/database/repositories"
 	"time"
 )
 
 func Handle(ctx context.Context, client *tbot.Client, server *tbot.Server) {
 	Start(ctx, client, server)
 
-	crn := cron.New()
-	_, _ = crn.AddFunc("CRON_TZ=Europe/Moscow 28 22 * * *", func() { fmt.Println("Runs at 04:30 Tokyo time every day") })
-	crn.Start()
+	//crn := cron.New()
+	//_, _ = crn.AddFunc("CRON_TZ=Europe/Moscow 28 22 * * *", func() { fmt.Println("Runs at 04:30 Tokyo time every day") })
+	//crn.Start()
 
 	//send today's daily text
 	server.HandleMessage("📗 Стих на cегодня", func(m *tbot.Message) {

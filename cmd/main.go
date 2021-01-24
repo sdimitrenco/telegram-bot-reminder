@@ -2,15 +2,15 @@ package main
 
 import (
 	"context"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/controlers"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/database"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/parsers"
+	"github.com/StanislavDimitrenco/telegram-bot-reminder/telegram"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
-	"telegram-bot-reminder/controlers"
-	"telegram-bot-reminder/database"
-	"telegram-bot-reminder/parsers"
-	"telegram-bot-reminder/telegram"
 )
 
 var ctx context.Context
